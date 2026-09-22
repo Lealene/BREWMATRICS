@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+brewmetric_data.json
+.DS_Store
