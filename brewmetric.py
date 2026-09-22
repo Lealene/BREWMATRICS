@@ -5,7 +5,7 @@ Run:   python brewmetric.py [port]      then open http://localhost:8000
 All logic (pricing, cart, cup visualizer, prep queue, ingredient levels) and all
 HTML/SVG rendering happen in Python. State is saved to brewmetric_data.json.
 """
-import json, os, sys, threading, webbrowser
+import json, os, sys
 from html import escape
 from urllib.parse import parse_qs
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -286,7 +286,7 @@ if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     url = f"http://localhost:{port}"
     print(f"BREWMETRIC POS running at {url}  (Ctrl+C to stop)")
-    threading.Timer(.6, lambda: webbrowser.open(url)).start()
+    print(f"Open {url} manually in your browser - auto-open removed")
     try:
         ThreadingHTTPServer(("127.0.0.1", port), Handler).serve_forever()
     except KeyboardInterrupt:
